@@ -1,0 +1,16 @@
+@import "../../theme/variables";
+
+.header-container {
+  position: fixed;
+  width: 100%;
+  height: $header-size;
+  background-color: $header-background;
+  transition: 0.3s;
+  overflow: hidden;
+  &:hover {
+    height: $header-size-hoover;
+  }
+  div {
+    padding: 3px;
+  }
+}

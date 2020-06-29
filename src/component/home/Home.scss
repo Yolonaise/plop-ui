@@ -1,0 +1,17 @@
+@import "../../theme/variables";
+
+.home-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  padding-top: $header-size;
+}
+
+.new-room-button {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+}
