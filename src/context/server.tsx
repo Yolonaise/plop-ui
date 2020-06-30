@@ -8,7 +8,12 @@ enum ServerStatus {
   Down
 }
 
-export function withServer<P>(Component: React.ComponentType<P>) {
+export interface WithServerProps {
+  status?: ServerStatus;
+  url?: string;
+}
+
+export function withServer<P extends WithServerProps>(Component: React.ComponentType<P>) {
   return class WithServer extends React.Component<P> {
     state = {
       fecthingServer: false,
@@ -25,7 +30,6 @@ export function withServer<P>(Component: React.ComponentType<P>) {
         this.setState({fecthingServer: false});
       } catch(error) {
         this.setState({...this.state, status: ServerStatus.Down});
-        console.log(error);
       }
       this.setState({...this.state, fecthingServer: false});
     }
@@ -35,7 +39,7 @@ export function withServer<P>(Component: React.ComponentType<P>) {
         <>
           { 
             !this.state.fecthingServer && this.state.status === ServerStatus.Up ? 
-              <Component {...this.props as P }/> :
+              <Component {...this.props as P } url={this.state.url} status={this.state.status}/> :
             <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translateY(-50%)'}}>
               {
                 !this.state.fecthingServer && this.state.status === ServerStatus.Down ? 

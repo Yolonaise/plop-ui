@@ -1,17 +1,18 @@
 import React from 'react';
 import './Header.scss';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 
 class Header extends React.PureComponent<any> {
   render() {
     return (
-    <div className="header-container">
-      <div>
-        <span>Plop</span>
-      </div>
-      <div>
-        <span>Hello there, I'm a hidden text</span>
-      </div>
-    </div>)
+      <AppBar position="fixed">
+        <Toolbar>
+          <Typography variant="h6" noWrap>
+            Plop
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    )
   }
 }
 
