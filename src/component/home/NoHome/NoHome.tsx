@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 import HomeModal from '../../homeC/HomeModal';
 import { Home } from '../../../model/HomeModel';
+import '../Home.scss';
 
 interface NoHomeProps {
   onHomeCreated: (value: Home) => void;
@@ -35,7 +36,7 @@ class NoHome extends React.Component<NoHomeProps, NoHomeState> {
   
   render() {
     return (
-      <>
+      <div className="home-container">
         <Button className="new-room-button" color="primary" onClick={this.handleOpen}>
           <Add fontSize="large"/>
         </Button>
@@ -43,7 +44,7 @@ class NoHome extends React.Component<NoHomeProps, NoHomeState> {
           onOpen={this.handleOpen}
           onClose={this.handleClose}
           open={this.state.open} />
-      </>
+      </div>
     );
   }
 }
