@@ -1,7 +1,8 @@
 import React from 'react';
 import { WithServerProps, withServer } from '../../context/server';
 import { Floor } from '../../model/FloorModel';
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
+import { Delete, Add }  from '@material-ui/icons';
 
 interface FloorProps extends WithServerProps {
   floorId: string;
@@ -31,12 +32,35 @@ class FloorRow extends React.Component<FloorProps, FloorState> {
     }
   }
 
+  addRoom = async (): Promise<any> => {
+    try{
+      await fetch(this.props.url + `/floor/${this.props.floorId}`, {method: 'DELETE'});
+      this.props.removeFloor(this.props.floorId);
+    } catch (error) {
+    }
+  }
+
   render() {
     return (
-      <div style={{width: '100%'}}>
-        <label>{this.state?.floor?.name}</label>
-        <Button variant="contained" onClick={this.handleRemoveFloor}>Remove</Button>
-      </div>
+      <Grid
+        container 
+          spacing={3}
+          direction="column"
+          justify="flex-start"
+          alignItems="flex-start" >
+          <Grid item>
+            <Button 
+              variant="contained"
+              onClick={this.addRoom}
+              style={{height:"100%"}}><Add/></Button>
+          </Grid>
+          <Grid item>
+            <Button 
+              variant="contained"
+              onClick={this.handleRemoveFloor}
+              style={{height:"100%"}}><Delete/></Button>
+          </Grid>
+      </Grid>
     );
   }
 }

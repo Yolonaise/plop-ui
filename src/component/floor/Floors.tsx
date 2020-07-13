@@ -45,9 +45,13 @@ class Floors extends React.Component<FloorsProps, FloorsState> {
   render() {
     const { floors } = this.props;
     return (
-      <>
+      <>  
         <div style={{marginTop:"10px"}}>
-          <Grid container spacing={3}>
+          <Grid 
+            container 
+            spacing={3}
+            direction="column"
+            justify="flex-start" >
           {
             floors.map((v, i) => {
               return (
